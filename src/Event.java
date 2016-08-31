@@ -1,9 +1,13 @@
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
 
-public class Event {
+public class Event  {
  private String title;
  private String info;
  private int day;
@@ -57,9 +61,19 @@ public void getCalendar()
 	  cal.set(Calendar.HOUR_OF_DAY,this.hour);
 	  cal.set(Calendar.MINUTE,this.minute);
 	  cal.set(Calendar.MONTH,this.month-1);//It's Starting from 0-12
-	  SimpleDateFormat format1 = new SimpleDateFormat("HH:mm,DD-MM");
+	  SimpleDateFormat format1 = new SimpleDateFormat("HH:mm,dd-MM");
 	  System.out.println(format1.format(cal.getTime()));
  }
+private String useCalendar()
+{
+	  Calendar cal =Calendar.getInstance();
+	  cal.set(Calendar.DAY_OF_MONTH,this.day);
+	  cal.set(Calendar.HOUR_OF_DAY,this.hour);
+	  cal.set(Calendar.MINUTE,this.minute);
+	  cal.set(Calendar.MONTH,this.month-1);//It's Starting from 0-12
+	  SimpleDateFormat format1 = new SimpleDateFormat("HH:mm,dd-MM");
+	  return format1.format(cal.getTime());
+}
 public void showEvent()
 {
 	System.out.printf("Title: %s\n",this.title);
@@ -67,5 +81,16 @@ public void showEvent()
 	System.out.print("Time: ");
 	this.getCalendar();
 }
-
+public void writeEvent() throws IOException
+{
+	    File outFile = new File ("event.txt");
+	    FileWriter fWriter = new FileWriter(outFile,true);
+	    PrintWriter pWriter = new PrintWriter (fWriter);
+	    pWriter.println("~~~~~~To Do~~~~~~");
+	    pWriter.printf("Title: %s\n",this.title);
+	    pWriter.printf("Info: %s\n",this.info);
+	    pWriter.printf("Time: "+this.useCalendar());
+	    pWriter.println();
+	    pWriter.close();
+}
 }

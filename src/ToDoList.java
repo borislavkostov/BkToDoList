@@ -1,8 +1,12 @@
+import java.util.List;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ToDoList {
- public static void main(String args[]){
-	 Event list =new Event();
+ public static void main(String args[]) throws IOException{
+	 List<Event> list=new ArrayList<Event>();
+	 Event event =new Event();
 	 System.out.println("1.Enter your event.");
 	 System.out.println("2.Show your event."); 
 	 Scanner input =new Scanner(System.in);
@@ -13,36 +17,47 @@ public class ToDoList {
 	 int day;
 	 int month;
 	 int hour;
-	 int minute; 
+	 int minute;
+	 String stop=input.nextLine();
 	 switch (menu) 
 	 {
 	case 1:
+		for(;;)
+		{
 		System.out.println("Enter title:");
 		title=input.nextLine();
-		list.setTitle(title);
-		input.nextLine();
+		event.setTitle(title);
 		System.out.println("Add some info:");
 		info=input.nextLine();
-		list.setInfo(info);
+		event.setInfo(info);
 		System.out.println("Enter day:");
 		day=input.nextInt();
-		list.setDay(day);
+		event.setDay(day);
 		input.nextLine();
 		System.out.println("Enter month");
 		month=input.nextInt();
-		list.setMonth(month);
+		event.setMonth(month);
 		input.nextLine();
 		System.out.println("Enter hour:");
 		hour=input.nextInt();
-		list.setHour(hour);
+		event.setHour(hour);
 		input.nextLine();
 		System.out.println("Enter minute:");
 		minute=input.nextInt();
-		list.setMinute(minute);
-		System.out.println();
+		event.setMinute(minute);
+		list.add(event);
+		event.writeEvent();
+		System.out.println("Enter STOP to stop entering events");
+		input.nextLine();
+		stop=input.nextLine();
+			if(stop.equals("STOP"))
+			{
+				break;
+			}
+		}
 		break;
 	case 2:
-		list.showEvent();
+		event.showEvent();
 		break;
 	default:
 		break;
