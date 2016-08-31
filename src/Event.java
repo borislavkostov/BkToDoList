@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Scanner;
 
 
 public class Event  {
@@ -14,6 +15,7 @@ public class Event  {
  private int month;
  private int hour;
  private int minute;
+ private String cal;
  
  public int getMinute() {
 	return minute;
@@ -76,6 +78,7 @@ private String useCalendar()
 }
 public void showEvent()
 {
+	System.out.println("~~~~~~TO DO~~~~~~");
 	System.out.printf("Title: %s\n",this.title);
 	System.out.printf("Info: %s\n",this.info);
 	System.out.print("Time: ");
@@ -86,11 +89,15 @@ public void writeEvent() throws IOException
 	    File outFile = new File ("event.txt");
 	    FileWriter fWriter = new FileWriter(outFile,true);
 	    PrintWriter pWriter = new PrintWriter (fWriter);
-	    pWriter.println("~~~~~~To Do~~~~~~");
-	    pWriter.printf("Title: %s\n",this.title);
-	    pWriter.printf("Info: %s\n",this.info);
-	    pWriter.printf("Time: "+this.useCalendar());
-	    pWriter.println();
+	    pWriter.println(this.title);
+	    pWriter.println(this.info);
+	    pWriter.println(this.useCalendar());
 	    pWriter.close();
+}
+public void readEvent(Scanner input)
+{
+	title=input.nextLine();
+	info=input.nextLine();
+	cal=input.nextLine();
 }
 }
