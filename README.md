@@ -1,8 +1,10 @@
 # BkToDoList
 Made by Borislav Kostov
 This is my to do list app.
+
 V3.0
 App has GUI.You can see your personal To do list.
+
 V2.0
 Simple UI.Now can store more than one event and store them in file with name event.txt .I'm going to fix Show your events section in V2.1
 
