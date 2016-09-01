@@ -4,7 +4,7 @@ This is my to do list app.
 
 V3.0-Final
 
-App has GUI.You can see your personal To do list.
+App has GUI.You can see your personal To do list and you can add events.
 
 V2.0
 
