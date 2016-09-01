@@ -1,6 +1,4 @@
-Buy
-milk1
-3:23,13-05
-Bobi
-buy bread
-16:32,13-04
+Buy milk
+Today
+Buy bread
+Tomorrow

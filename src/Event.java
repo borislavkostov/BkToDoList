@@ -2,27 +2,14 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.Scanner;
 
 
 public class Event  {
  private String title;
  private String info;
- private int day;
- private int month;
- private int hour;
- private int minute;
- private String cal;
- 
- public int getMinute() {
-	return minute;
-}
-public void setMinute(int minute) {
-	this.minute = minute;
-}
+
+
 public Event(){
 
  }
@@ -38,51 +25,13 @@ public String getInfo() {
 public void setInfo(String info) {
 	this.info = info;
 }
-public int getDay() {
-	return day;
-}
-public void setDay(int day) {
-	this.day = day;
-}
-public int getMonth() {
-	return month;
-}
-public void setMonth(int month) {
-	this.month = month;
-}
-public int getHour() {
-	return hour;
-}
-public void setHour(int hour) {
-	this.hour = hour;
-}
-public void getCalendar()
- {
-	  Calendar cal =Calendar.getInstance();
-	  cal.set(Calendar.DAY_OF_MONTH,this.day);
-	  cal.set(Calendar.HOUR_OF_DAY,this.hour);
-	  cal.set(Calendar.MINUTE,this.minute);
-	  cal.set(Calendar.MONTH,this.month-1);//It's Starting from 0-12
-	  SimpleDateFormat format1 = new SimpleDateFormat("HH:mm,dd-MM");
-	  System.out.println(format1.format(cal.getTime()));
- }
-private String useCalendar()
-{
-	  Calendar cal =Calendar.getInstance();
-	  cal.set(Calendar.DAY_OF_MONTH,this.day);
-	  cal.set(Calendar.HOUR_OF_DAY,this.hour);
-	  cal.set(Calendar.MINUTE,this.minute);
-	  cal.set(Calendar.MONTH,this.month-1);//It's Starting from 0-12
-	  SimpleDateFormat format1 = new SimpleDateFormat("HH:mm,dd-MM");
-	  return format1.format(cal.getTime());
-}
+
+
 public void showEvent()
 {
 	System.out.println("~~~~~~TO DO~~~~~~");
 	System.out.printf("Title: %s\n",this.title);
 	System.out.printf("Info: %s\n",this.info);
-	System.out.print("Time: ");
-	this.getCalendar();
 }
 public void writeEvent() throws IOException
 {
@@ -91,13 +40,17 @@ public void writeEvent() throws IOException
 	    PrintWriter pWriter = new PrintWriter (fWriter);
 	    pWriter.println(this.title);
 	    pWriter.println(this.info);
-	    pWriter.println(this.useCalendar());
 	    pWriter.close();
 }
 public void readEvent(Scanner input)
 {
 	title=input.nextLine();
 	info=input.nextLine();
-	cal=input.nextLine();
+}
+@Override
+public String toString()
+{
+	String text ="~~~~~~TO DO~~~~~~\n"+"Title: "+this.title+"\nInfo:"+this.info+"\n";
+	return text;
 }
 }
